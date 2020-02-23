@@ -20,8 +20,9 @@ body{
     text-decoration: none;
     font-size: 25px;
     color: #ffffff;
-    font-weight: 500;
-    letter-spacing: -.4px;
+    font-weight: 700;
+    letter-spacing: -.35px;
+    /* line-height: 0; */
     letter-spacing: 0.55;
     letter-spacing: 1;
 }
@@ -32,15 +33,16 @@ body{
     display: flex;
     justify-content: space-between;
     font-size: 12px;
+    letter-spacing: -.2px;
     width: 371px;
     color: white;
-    font-weight: 700;
+    font-weight: bold;
 }
 .navigator li::before {
     content: "\2022 ";
     color: #494e62;
     font-weight: 100;
-    margin-right: 12px;
+    margin-right: 10px;
 }
 .navigator li:first-child::before {
     content: none;
@@ -48,6 +50,9 @@ body{
 .navigator li:hover{
     color: #f06c64;
     cursor: pointer;   
+}
+.active{
+    color: #f06c64;
 }
 
 /*SLIDER*/
@@ -79,28 +84,29 @@ body{
     align-items: center;
     margin: 0 55px 0 54px;
 }
-.slider_phone{  
+.phone{  
     position: relative;  
 }
-.slider_phone-vertical{
+.phone-vertical{
     background: url(./assets/phone01.svg);
     width: 240px;
     height: 483px;
 }
-.slider_phone-horisontal{
+.phone-horisontal{
+    transform: scale(1);
     background: url(./assets/phone02.svg);
     width: 484px;
     height: 240px;
     margin-left: 73px;
     margin-top: -1px;
 }
-.slider_detail{
+.phone__screen{
     position: absolute;
     box-shadow: 0 0 0px 3px #c5c5c5;
     border-radius: 1px;
     overflow: hidden;
 }
-.slider_detail-vertical{
+.phone__screen-vertical{
     top: 65px;
     left: 14px;
     width: 188px;
@@ -108,7 +114,7 @@ body{
     background-position: -14px -135px;
     background-image: url(./assets/phone/vertical.png);
 }
-.slider_detail-horizontal{
+.phone__screen-horizontal{
     top: 14px;
     left: 60px;
     width: 333px;
@@ -118,37 +124,37 @@ body{
 }
 
 /* TOOLS */
-.wrapper-tools{
+.services__wrapper{
     padding: 62px 40px 29px 40px;
     background-color: #f2f2f2;
     color: #666d89;
     line-height: 30px;
 }
-.tools h2{
+.services h2{
     font-size: 30px;
     font-weight: 900;
     margin-bottom: 21px;
-    letter-spacing: -0.2px;
+    /* margin-left: .4px; */
+    letter-spacing: -0.18px;
 }
-.tools p{
+.services p{
     font-size: 18px;
     font-weight: 500;
-    letter-spacing: -0.22px;
+    letter-spacing: -0.21px;
     color: #767e9e;
     margin-bottom: 46px;
     text-align: justify;
 }
-.layout-3-column{
-    display:flex;
+.tools{
+    flex-flow: row wrap;
+    display: flex;
     justify-content: space-between;
-    /* margin-bottom: 0px; */
-    margin: 0px 1px 37px 1px;
+    margin: 0 1px;
 }
 .tool{
-    /* width: 299px; */
-    height: 86px;
+    height: 90px;
     display: flex;
-    /* justify-content: space-between; */
+    margin-bottom: 33px;
 }
 .tool__icon{
     width: 55px;
@@ -168,7 +174,6 @@ body{
 }
 .tool__icon-heart{
     background-position: -652px -15px;
-    animation-fill-mode: red;
 }
 .tool__icon-phone{
     background-position: -13px -138px;
@@ -181,14 +186,12 @@ body{
 }
 .tool__description{
     width: 220px;
+    overflow-y: hidden;
 }
 .tool__description h4 {
     font-size: 18px;
-    padding: 0;
-    margin: 0;
     line-height: 16px;
     font-weight: 900;
-    margin-bottom: 0px;
     letter-spacing: -.09px;
 }
 .tool__description p{
@@ -197,5 +200,5 @@ body{
     line-height: 22px;
     font-weight: 400;
     text-align: justify;
-    letter-spacing: px;
+    letter-spacing: 0.05px;
 }
