@@ -70,13 +70,13 @@ body{
     height: 27px;
     background-image: url(./assets/chev.svg);
 }
-.slider__button-right{
+.slider__button_right{
     transform: rotate(180deg);
 }
 .slider__button:hover{
     transform: scale(1.2);
 }
-.slider__button-right:hover{
+.slider__button_right:hover{
     transform: scale(1.2) rotate(180deg);
 }
 .slider__images{
@@ -87,12 +87,12 @@ body{
 .phone{  
     position: relative;  
 }
-.phone-vertical{
+.phone_vertical{
     background: url(./assets/phone01.svg);
     width: 240px;
     height: 483px;
 }
-.phone-horisontal{
+.phone_horisontal{
     transform: scale(1);
     background: url(./assets/phone02.svg);
     width: 484px;
@@ -106,7 +106,7 @@ body{
     border-radius: 1px;
     overflow: hidden;
 }
-.phone__screen-vertical{
+.phone__screen_vertical{
     top: 65px;
     left: 14px;
     width: 188px;
@@ -114,7 +114,7 @@ body{
     background-position: -14px -135px;
     background-image: url(./assets/phone/vertical.png);
 }
-.phone__screen-horizontal{
+.phone__screen_horizontal{
     top: 14px;
     left: 60px;
     width: 333px;
@@ -169,22 +169,22 @@ body{
     background-image: url(./assets/icon.svg);
     background-repeat: no-repeat;
 }
-.tool__icon-pen{
+.tool__icon_pen{
     background-position: -13px -15px;
 }
-.tool__icon-light{
+.tool__icon_light{
     background-position: -332px -15px;
 }
-.tool__icon-heart{
+.tool__icon_heart{
     background-position: -652px -15px;
 }
-.tool__icon-phone{
+.tool__icon_phone{
     background-position: -13px -138px;
 }
-.tool__icon-message{
+.tool__icon_message{
     background-position: -332px -138px;
 }
-.tool__icon-star{
+.tool__icon_star{
     background-position: -652px -138px;
 }
 .tool__description{
