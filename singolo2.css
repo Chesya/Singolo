@@ -94,6 +94,9 @@ h3 {
   color: #666d89;
   font-weight: 900;
   padding: 17px 0 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 p {
