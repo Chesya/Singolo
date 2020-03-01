@@ -103,6 +103,7 @@ p {
   font-weight: 300;
   padding-bottom: 11px;
   letter-spacing: 0.19px;
+  text-align: justify;
 }
 
 .portfolio {
@@ -127,6 +128,11 @@ p {
   color: #767e9e;
   font-weight: 400;
   border-radius: 6px;
+  transition: all 0.3s;
+}
+.tags__list li:hover {
+  color: #f06c64;
+  border: 1px solid #2d303a;
 }
 
 .works {
@@ -134,10 +140,12 @@ p {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  overflow: hidden;
 }
 .works__image {
   width: 220px;
   height: 187px;
+  margin-bottom: 20px;
 }
 .works__image_1 {
   background-image: url(./assets/1.png);
@@ -204,10 +212,10 @@ p {
   justify-content: space-between;
 }
 
-.resume {
+.resume__layout {
   width: 302px;
 }
-.resume p {
+.resume__layout p {
   font-size: 12px;
   line-height: 22px;
   font-weight: 400;
@@ -239,6 +247,7 @@ p {
   height: 32px;
   margin-right: 8px;
   background: url(././assets/SocialLink.png);
+  transition: all 0.3s;
 }
 .social__link_facebook {
   background-position: 0px 0px;
@@ -251,6 +260,10 @@ p {
 }
 .social__link_lnkedl {
   background-position: 184px 0px;
+}
+.social__link:hover {
+  transform: translateY(-10px);
+  transition: all 0.2s;
 }
 
 /*# sourceMappingURL=singolo2.css.map */
