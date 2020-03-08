@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singolo</title>
+    <link rel="stylesheet" href="singolo3.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700,900&display=swap&subset=latin-ext" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <main class="main">
+            <section class="quote">
+                <h2>Get a Quote</h2>
+                <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                <div class="quote__container">
+                    <form class="quote__form" action="" method="POST">
+                        <input type="text" name="name" class="input input__text" placeholder="Name (Reqiured)" pattern="^[A-Za-zА-Яа-яЁё\s]+$" required>
+                        <input type="email" name="email" class="input input__email" placeholder="Email (Reqiured)" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" required>
+                        <input type="text" name="subject" class="input input__sub" placeholder="Subject">
+                        <textarea name="textarea" placeholder="Describe your project in detail..."></textarea>
+                        <button type="submit" name="submit">Submit</button>
+                    </form>
+                    <div class="contact">
+                        <h3>Contact Information</h3>
+                        <p>Quisque hendrerit purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. Proin sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus. Morbi at aliquet turpis, et consequat felis.</p>
+                        <ul contact__list>
+                            <li class="contact__list__item">
+                                <div class="contact__list__icon contact__list__icon_map"></div>
+                                <a href="">Elm St. 14/05 Lost City</a>
+                            </li >
+                            <li  class="contact__list__item" >
+                                <div class="contact__list__icon contact__list__icon_phone"></div>
+                                <a href="tel:035283318635">03528 331 86 35 </a>
+                            </li>
+                            <li class="contact__list__item">
+                                <div class="contact__list__icon contact__list__icon_mail"></div>
+                                <a href="email:info@singolo.com">info@singolo.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__layout">
+                <div class="footer__copyright">
+                    <p>© Copyright 2013</p>
+                </div>
+                <div class="footer__link">
+                    <ul class="social">
+                        <li class="social__link social__link_facebook"></li>
+                        <li class="social__link social__link_google"></li>
+                        <li class="social__link social__link_twitter"></li>
+                        <li class="social__link social__link_lnkedl"></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
