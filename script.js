@@ -1,6 +1,7 @@
 window.onload = function(){
     //navigator
     addNavigatorClickHandler();
+    addNavigatorScrollHandler();
     //Tags
     addTagsClickHandler();
     //PortfolioPhoto
@@ -10,9 +11,9 @@ window.onload = function(){
     //sliderTouchPhone
     addSliderPhoneClickHandler();
     //MessageSubmit
-    addMessageSubmitClickHandler();
+    addSubmitMessageClickHandler();
     //MessageClose
-    addMessageCloseClickHandler();
+    addCloseMessageClickHandler();
 }
 
 // addNavigatorClickHandler
@@ -34,19 +35,37 @@ const removeSelectedLink = () =>{
 const selectClickedLink = (clickedLink) =>{
     clickedLink.classList.add('active');
 }
-
+//addNavigatorScrollHandler
+const addNavigatorScrollHandler = () => {
+    Sections = document.querySelectorAll('section');
+    links = document.querySelectorAll('.navigator .navigator__link');
+    window.addEventListener('scroll', () => {
+        posScroll = window.scrollY;
+        posNull = document.getElementById('header').offsetHeight;
+        Sections.forEach( section => {  
+            posSection = section.offsetTop;
+            heightSection = section.offsetHeight; 
+            if ((posScroll >= (posSection - posNull)) && (posScroll < (posSection - posNull + heightSection))) {
+                links.forEach( link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === section.getAttribute('id')) {
+                        link.classList.add('active');
+                    }
+                })
+            }
+        })
+    })
+}
 //addTagsClickHandler
 const addTagsClickHandler = () => {
     document.querySelector('.tags__list').addEventListener('click', (e) => {
-        if (e.target.classList.contains('tag')) {
+        if ((e.target.classList.contains('tag')) && (e.target.classList.contains('active'))) {
+            removeSelectedTag();
+        } else {
             let clickedTag = e.target;
             removeSelectedTag();
             selectClickedTag(clickedTag);
-            if (clickedTag.innerText === 'All') {
-                showAllWorks();
-            } else {
-                filterWorksBySelectedTag(clickedTag.innerText);
-            }
+            randomWorksBySelectedTag();
         }
     })
 }
@@ -59,23 +78,31 @@ const removeSelectedTag = () => {
 const selectClickedTag = (clickedTag) => {
     clickedTag.classList.add('active');
 } 
-const showAllWorks = () => {
+const randomWorksBySelectedTag = () =>{
     let works = document.querySelectorAll('.works .works__image');
-    works.forEach(work =>{
-        work.classList.remove('hidden');
-    })
-
-}
-const filterWorksBySelectedTag = (selectedTag) =>{
-    let works = document.querySelectorAll('.works .works__image');
-    works.forEach(work => {
-        work.classList.add('hidden');
-        work.querySelectorAll('.tag').forEach( tag =>{
-            if (tag.innerText === selectedTag) {
-                work.classList.remove('hidden');
-            }
-        }) 
-    })
+    let worksNew = [];
+    let numbers = [];
+    for ( j=0; j< works.length;j++) {
+        a = false;
+        while (!a) {
+            b = true;
+            number = Math.floor(Math.random()*(works.length));
+            numbers.forEach( e =>{ 
+                if (e == number) {
+                    b = false; 
+                }
+            })
+            if (b == false) {
+                a = false;
+            } else {
+                a = true;
+                numbers[j] = number;
+            }      
+        }
+        worksNew[j] = works[number];
+    }
+    document.querySelector('.works').innerHTML = '';
+    document.querySelector('.works').append(...worksNew);
 }
 // addPortfolioClickHandler
 const addPortfolioClickHandler =() => {
@@ -104,101 +131,116 @@ const selectClickedImage = (clickedImage) =>{
 const addSliderButtonClickHandler = () => {
     document.querySelector('.slider').addEventListener('click' , (e) => {
         if (e.target.classList.contains('slider__button')) {
-            var n;
-            var slides = document.querySelectorAll('.slider__images');
-            for (let i =0; i<slides.length; i++){
-                if (slides[i].classList.contains('sliderShow')){
-                    n = i;    
-                } 
-            }
             let ClickedButton = e.target;
+            let n;
+            let slides = document.querySelectorAll('.slider__images');
+            for (let i=0; i<slides.length; i++){
+                if (slides[i].classList.contains('active')){
+                    n = i;
+                    slides[n].classList.remove('active');  
+                }
+                if (slides[i].classList.contains('sliderShowLeft')){
+                    n = i;
+                    slides[n].classList.remove('sliderShowLeft');  
+                }
+                if (slides[i].classList.contains('sliderShowRight')){
+                    n = i;
+                    slides[n].classList.remove('sliderShowRight');
+                }
+            }
             if (ClickedButton.classList.contains('slider__button_right')){
                 ShowNextSlide(slides,n);
             } else {
-                ShowPreviousSlide(slides,n);
+                ShowPrevSlide(slides,n);
             }
         }  
     })
 }
 const ShowNextSlide = (slides,n) =>{
-    slides[n].classList.remove('sliderShow');
     if (n < (slides.length -1)) {
-        slides[n+1].classList.add('sliderShow'); 
+        slides[n+1].classList.add('sliderShowRight');
     } else {
         n=0;
-        slides[n].classList.add('sliderShow');
+        slides[n].classList.add('sliderShowRight');
     }
 }
-const ShowPreviousSlide = (slides,n) =>{
-    slides[n].classList.remove('sliderShow');
+const ShowPrevSlide = (slides,n) =>{
     if (n != 0) {
-        slides[n-1].classList.add('sliderShow'); 
+        slides[n-1].classList.remove('sliderNoShow');
+        slides[n-1].classList.add('sliderShowLeft'); 
     } else {
         n=(slides.length-1);
-        slides[n].classList.add('sliderShow');
+        slides[n].classList.remove('sliderNoShow');
+        slides[n].classList.add('sliderShowLeft');
     }
 }
 //sliderTouchPhone
 const addSliderPhoneClickHandler = () => {
     document.querySelector('.slider').addEventListener('click', (e) => {
         if (e.target.classList.contains('phone__touch_horizontal')) {
-            phone = document.querySelector('.phone__screen_horizontal');
-            if (phone.classList.contains('hidden')){
-                phone.classList.remove('hidden');
-            } else {
-                phone.classList.add('hidden');
-            }
+            clickedPhone = document.querySelector('.phone__screen_horizontal');
+            PowerDisplayONorOff(clickedPhone);
         };
         if (e.target.classList.contains('phone__touch_vertical')) {
-            phone = document.querySelector('.phone__screen_vertical');
-            if (phone.classList.contains('hidden')){
-                phone.classList.remove('hidden');
-            } else {
-                phone.classList.add('hidden');
-            }
+            clickedPhone = document.querySelector('.phone__screen_vertical');
+            PowerDisplayONorOff(clickedPhone);
         };
         if (e.target.classList.contains('phone__touch_green')) {
-            phone = document.querySelector('.phone__screen_vertical_green');
-            if (phone.classList.contains('hidden')){
-                phone.classList.remove('hidden');
-            } else {
-                phone.classList.add('hidden');
-            }
+            clickedPhone = document.querySelector('.phone__screen_vertical_green');
+            PowerDisplayONorOff(clickedPhone);
         };
     })
 }
+const PowerDisplayONorOff = (clickedPhone) =>{
+    if (clickedPhone.classList.contains('hidden')){
+        clickedPhone.classList.remove('hidden');
+    } else {
+        clickedPhone.classList.add('hidden');
+    }
+}
 // MessageSibmit
-const addMessageSubmitClickHandler = () => {
+const addSubmitMessageClickHandler = () => {
     document.querySelector('.quote__container').addEventListener('click', (e)=> {
         if (e.target.classList.contains('submit')) {
-            let name = document.getElementById('name');
-            let email = document.getElementById('email');
-            if (name.checkValidity() && email.checkValidity()) {
-                e.preventDefault();
-                let message = document.querySelector('.quote__container .quote__message');
-                message.classList.remove('hidden');
-                let subject = document.getElementById('subject').value.toString();
-                let description = document.getElementById('description').value.toString();
-                if ( subject != '' ) {
-                    document.querySelector('.quote__container .message__subject').innerText = 'Subject: ' + subject;
-                } else {
-                    document.querySelector('.quote__container .message__subject').innerText = 'Without subject';
-                };
-                if (description != '') {
-                    document.querySelector('.quote__container .message__description').innerText = 'Description: ' + description;
-                } else {
-                    document.querySelector('.quote__container .message__description').innerText = 'Without description';
-                };
-            }
+            let event = e;
+            ShowModalityWindow(event);
         }
     })
-}; 
+};
+const ShowModalityWindow = (event) => {
+    let name = document.getElementById('name');
+    let email = document.getElementById('email');
+    if (name.checkValidity() && email.checkValidity()) {
+        event.preventDefault();
+        let message = document.querySelector('.quote__container .quote__message');
+        message.classList.remove('hidden');
+        addSubjectInModalityWindow();
+        addDescriptionInModalityWindow();
+    }
+}
+const addSubjectInModalityWindow = () =>{
+    let subject = document.getElementById('subject').value.toString();
+    if ( subject != '' ) {
+        document.querySelector('.quote__container .message__subject').innerText = 'Subject: ' + subject;
+    } else {
+        document.querySelector('.quote__container .message__subject').innerText = 'Without subject';
+    };
+}
+const addDescriptionInModalityWindow = () =>{
+    let description = document.getElementById('description').value.toString();
+    if (description != '') {
+        document.querySelector('.quote__container .message__description').innerText = 'Description: ' + description;
+    } else {
+        document.querySelector('.quote__container .message__description').innerText = 'Without description';
+    };
+} 
 // MessageClose
-const addMessageCloseClickHandler = () => {
+const addCloseMessageClickHandler = () => {
     document.querySelector('.quote__container').addEventListener('click', (e)=>{
         if (e.target.classList.contains('close')) {
             let message = document.querySelector('.quote__container .quote__message');
             message.classList.add('hidden');
+            document.querySelector('form').reset();
         }
     })
 }

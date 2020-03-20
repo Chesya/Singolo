@@ -15,18 +15,18 @@
                 </div>
                 <nav class="header__navigation">
                     <ul class="navigator">
-                        <li><a class="navigator__link" href="#top">Home</a></li>
+                        <li><a class="navigator__link active" href="#slider">Home</a></li>
                         <li><a class="navigator__link" href="#services">Services</a></li>
                         <li><a class="navigator__link" href="#portfolio">Portfolio</a></li>
-                        <li><a class="navigator__link"href="#about">About</a></li>
+                        <li><a class="navigator__link" href="#about">About</a></li>
                         <li><a class="navigator__link" href="#quote">Contact</a></li>
                     </ul>
                 </nav>
         </header>
-        <main class="main">
-            <section class="slider" id="slider">
+        <main class="main" id="main">
+            <section class="slider" id="main">
                     <div class="slider__button" ></div>
-                    <div class="slider__images slider__images_1 sliderShow" >
+                    <div class="slider__images slider__images_1 active" >
                         <div class="phone phone_vertical">
                              <div class="phone__screen phone__screen_vertical"></div>
                              <div class="phone__touch phone__touch_vertical"></div>
@@ -36,7 +36,7 @@
                              <div class="phone__touch phone__touch_horizontal"></div>
                         </div>
                     </div>
-                    <div class="slider__images slider__images_2" >
+                    <div class="slider__images slider__images_2 " >
                         <div class="phone phone_vertical phone_vertical_green">
                              <div class="phone__screen phone__screen_vertical phone__screen_vertical_green"></div>
                              <div class="phone__touch phone__touch_green"></div>
@@ -172,17 +172,7 @@
                     </div> 
                     <div class="works__image works__image_12">
                         <span class="tag">Web Design</span>
-                    </div>                 
-                    <div class="works__image works__image_13">
-                        <span class="tag">Graphic Design</span>
-                    </div> 
-                    <div class="works__image works__image_14">
-                        <span class="tag">Web Design</span>
-                    </div> 
-                    <div class="works__image works__image_15">
-                        <span class="tag">Artwork</span>
-                        <span class="tag">Graphic Design</span>
-                    </div>                 
+                    </div>                                 
                 </div>
             </section>
             <section class="about" id="about">
@@ -240,7 +230,7 @@
                         <input type="text" name="name" id="name" class="input input__name" placeholder="Name (Reqiured)" pattern="^[A-Za-zА-Яа-яЁё\s]+$" required>
                         <input type="email" name="email" id="email" class="input input__email" placeholder="Email (Reqiured)" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                         <input type="text" name="subject" id="subject" class="input input__sub" placeholder="Subject" maxlength="25">
-                        <textarea name="textarea" id="description" placeholder="Describe your project in detail..." maxlength="100"></textarea>
+                        <textarea name="textarea" id="description" placeholder="Describe your project in detail..." maxlength="1000"></textarea>
                         <button  class="submit" >Submit</button>
                         <div class="quote__message hidden">
                             <div class="message">
@@ -269,8 +259,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-                
+                </div>              
             </section>
         </main>
         <footer class="footer">
