@@ -82,23 +82,19 @@ const randomWorksBySelectedTag = () =>{
     let works = document.querySelectorAll('.works .works__image');
     let worksNew = [];
     let numbers = [];
+    let number;
     for ( j=0; j< works.length;j++) {
-        a = false;
-        while (!a) {
-            b = true;
+        let a = true;
+        while (a) {
+            a = false;
             number = Math.floor(Math.random()*(works.length));
-            numbers.forEach( e =>{ 
-                if (e == number) {
-                    b = false; 
+            numbers.forEach( el =>{ 
+                if (el == number) {
+                    a = true; 
                 }
-            })
-            if (b == false) {
-                a = false;
-            } else {
-                a = true;
-                numbers[j] = number;
-            }      
+            }) 
         }
+        numbers[j] = number; 
         worksNew[j] = works[number];
     }
     document.querySelector('.works').innerHTML = '';
@@ -165,12 +161,10 @@ const ShowNextSlide = (slides,n) =>{
     }
 }
 const ShowPrevSlide = (slides,n) =>{
-    if (n != 0) {
-        slides[n-1].classList.remove('sliderNoShow');
+    if (n > 0) {
         slides[n-1].classList.add('sliderShowLeft'); 
     } else {
         n=(slides.length-1);
-        slides[n].classList.remove('sliderNoShow');
         slides[n].classList.add('sliderShowLeft');
     }
 }
@@ -198,7 +192,7 @@ const PowerDisplayONorOff = (clickedPhone) =>{
         clickedPhone.classList.add('hidden');
     }
 }
-// MessageSibmit
+// MessageSubmit
 const addSubmitMessageClickHandler = () => {
     document.querySelector('.quote__container').addEventListener('click', (e)=> {
         if (e.target.classList.contains('submit')) {
