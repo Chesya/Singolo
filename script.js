@@ -14,6 +14,7 @@ window.onload = function(){
     addSubmitMessageClickHandler();
     //MessageClose
     addCloseMessageClickHandler();
+    addHamburgerMenuClickHandler();
 }
 
 // addNavigatorClickHandler
@@ -238,3 +239,17 @@ const addCloseMessageClickHandler = () => {
         }
     })
 }
+//HamburgerMenuClickHandler
+const addHamburgerMenuClickHandler = () => {
+    let HamburgerBlock = document.querySelector('.header__hamburger');
+    let HamburgerMenu = document.querySelector('.header__navigation');
+    HamburgerBlock.addEventListener('click',(e) => {
+        if (HamburgerBlock.classList.contains('hamburger_active')) {
+            HamburgerBlock.classList.remove('hamburger_active');
+            HamburgerMenu.classList.remove('header__navigation_active');
+        } else {
+            HamburgerBlock.classList.add('hamburger_active');
+            HamburgerMenu.classList.add('header__navigation_active');
+        }
+    })
+} 
