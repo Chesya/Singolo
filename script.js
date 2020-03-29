@@ -243,13 +243,33 @@ const addCloseMessageClickHandler = () => {
 const addHamburgerMenuClickHandler = () => {
     let HamburgerBlock = document.querySelector('.header__hamburger');
     let HamburgerMenu = document.querySelector('.header__navigation');
+    let HeaderLogo = document.querySelector('.header__logo');
     HamburgerBlock.addEventListener('click',(e) => {
         if (HamburgerBlock.classList.contains('hamburger_active')) {
             HamburgerBlock.classList.remove('hamburger_active');
             HamburgerMenu.classList.remove('header__navigation_active');
+            HeaderLogo.classList.remove('header__logo_active');
         } else {
             HamburgerBlock.classList.add('hamburger_active');
+            HamburgerMenu.focus();
             HamburgerMenu.classList.add('header__navigation_active');
+            HeaderLogo.classList.add('header__logo_active');
         }
     })
-} 
+    HamburgerMenu.addEventListener('click', (e) => {
+        ClickLink = e.target;
+        if (ClickLink.classList.contains('navigator__link')) {
+            HamburgerBlock.classList.remove('hamburger_active');
+            HamburgerMenu.classList.remove('header__navigation_active');
+            HeaderLogo.classList.remove('header__logo_active');
+        }
+    })
+    window.addEventListener("resize", () => {
+        if(document.documentElement.clientWidth >= 768) {
+            HamburgerBlock.classList.remove('hamburger_active');
+            HamburgerMenu.classList.remove('header__navigation_active');
+            HeaderLogo.classList.remove('header__logo_active');
+        }
+      });
+
+}
