@@ -165,6 +165,14 @@ p {
     left: 0%;
   }
 }
+@keyframes LogoTrunc {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 71px;
+  }
+}
 .header {
   position: sticky;
   top: 0;
@@ -186,15 +194,16 @@ p {
   }
 }
 .header__logo {
-  transition: all 0.7s ease-out;
+  transition: all 1.3s;
 }
 .header__logo_active {
   z-index: 1;
   position: fixed;
-  left: 0;
   top: 24px;
-  margin-left: 71px;
-  transition: margin-left 0.5s ease-in;
+  left: 71px;
+  animation-duration: 0.8s;
+  animation-name: LogoTrunc;
+  animation-timing-function: ease;
 }
 .header .logo {
   transition: all 1s;

@@ -247,7 +247,6 @@ const addHamburgerMenuClickHandler = () => {
     let HamburgerList = document.querySelector('.navigator');
     let HeaderLogo = document.querySelector('.header__logo');
     document.addEventListener('click', (e) => {
-        console.log(e.target);
         if (e.target ==  HamburgerBlock || e.target == HamburgerLine ) {
             if (HamburgerBlock.classList.contains('hamburger_active')) {
                 HamburgerBlock.classList.remove('hamburger_active');
