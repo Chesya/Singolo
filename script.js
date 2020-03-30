@@ -242,26 +242,42 @@ const addCloseMessageClickHandler = () => {
 //HamburgerMenuClickHandler
 const addHamburgerMenuClickHandler = () => {
     let HamburgerBlock = document.querySelector('.header__hamburger');
+    let HamburgerLine = document.querySelector('.hamburger__line')
     let HamburgerMenu = document.querySelector('.header__navigation');
+    let HamburgerList = document.querySelector('.navigator');
     let HeaderLogo = document.querySelector('.header__logo');
-    HamburgerBlock.addEventListener('click',(e) => {
-        if (HamburgerBlock.classList.contains('hamburger_active')) {
-            HamburgerBlock.classList.remove('hamburger_active');
-            HamburgerMenu.classList.remove('header__navigation_active');
-            HeaderLogo.classList.remove('header__logo_active');
+    document.addEventListener('click', (e) => {
+        console.log(e.target);
+        if (e.target ==  HamburgerBlock || e.target == HamburgerLine ) {
+            if (HamburgerBlock.classList.contains('hamburger_active')) {
+                HamburgerBlock.classList.remove('hamburger_active');
+                HamburgerMenu.classList.remove('header__navigation_active');
+                HeaderLogo.classList.remove('header__logo_active');
+                HamburgerMenu.classList.remove('header__navigation_showIn');
+                HamburgerMenu.classList.add('header__navigation_showOut');
+            } else {
+                HamburgerBlock.classList.add('hamburger_active');
+                HamburgerMenu.classList.add('header__navigation_active');
+                HeaderLogo.classList.add('header__logo_active');
+                HamburgerMenu.classList.remove('header__navigation_showOut');
+                HamburgerMenu.classList.add('header__navigation_showIn');
+            }
         } else {
-            HamburgerBlock.classList.add('hamburger_active');
-            HamburgerMenu.focus();
-            HamburgerMenu.classList.add('header__navigation_active');
-            HeaderLogo.classList.add('header__logo_active');
+            if (e.target !== HamburgerMenu ) {
+                HamburgerBlock.classList.remove('hamburger_active');
+                HamburgerMenu.classList.remove('header__navigation_active');
+                HeaderLogo.classList.remove('header__logo_active');
+                HamburgerMenu.classList.add('header__navigation_showOut');
+            }
         }
-    })
-    HamburgerMenu.addEventListener('click', (e) => {
-        ClickLink = e.target;
-        if (ClickLink.classList.contains('navigator__link')) {
-            HamburgerBlock.classList.remove('hamburger_active');
-            HamburgerMenu.classList.remove('header__navigation_active');
-            HeaderLogo.classList.remove('header__logo_active');
+        if (e.target.ParentNode == HamburgerList ) {
+            if (e.target.classList.contains('active')) {
+                HamburgerBlock.classList.remove('hamburger_active');
+                HamburgerMenu.classList.remove('header__navigation_active');
+                HeaderLogo.classList.remove('header__logo_active');
+                HamburgerMenu.classList.add('header__navigation_showOut');  
+            }
+            
         }
     })
     window.addEventListener("resize", () => {

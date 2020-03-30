@@ -126,7 +126,7 @@ p {
 
 @keyframes slideinLeft {
   from {
-    left: 1020px;
+    left: 100%;
   }
   to {
     left: 0;
@@ -134,10 +134,18 @@ p {
 }
 @keyframes slideinRight {
   from {
-    left: -1020px;
+    left: -100%;
   }
   to {
     left: 0;
+  }
+}
+@keyframes NavigationinRight {
+  from {
+    left: 0%;
+  }
+  to {
+    left: -100%;
   }
 }
 .header {
@@ -160,13 +168,19 @@ p {
     padding: 23px 0 23px 0;
   }
 }
+.header__logo {
+  transition: all 0.7s ease-out;
+}
 .header__logo_active {
   z-index: 1;
   position: fixed;
-  left: 71px;
+  left: 0;
   top: 24px;
+  margin-left: 71px;
+  transition: margin-left 0.5s ease-in;
 }
 .header .logo {
+  transition: all 1s;
   text-decoration: none;
   font-size: 25px;
   color: #ffffff;
@@ -180,11 +194,12 @@ p {
 .hamburger {
   z-index: 1;
   display: none;
-  position: absolute;
+  position: fixed;
   top: 26px;
   left: 20px;
   width: 25px;
   height: 20px;
+  transition: transform 0.8s ease-in-out;
 }
 @media (max-width: 767px) {
   .hamburger {
@@ -210,12 +225,14 @@ p {
   top: 0;
 }
 .hamburger_active {
-  transform: rotate(90deg);
+  transform: rotate(450deg);
+  transition: transform 0.8s ease-in;
 }
 
 @media (max-width: 767px) {
   .header__navigation {
     visibility: hidden;
+    transition: visibility 0.8s;
     position: fixed;
     top: 0;
     left: 0;
@@ -228,6 +245,14 @@ p {
 .header__navigation_active {
   visibility: visible;
 }
+.header__navigation_showIn {
+  animation-duration: 0.8s;
+  animation-name: slideinRight;
+}
+.header__navigation_showOut {
+  animation-duration: 0.8s;
+  animation-name: NavigationinRight;
+}
 .header__navigation .navigator {
   display: flex;
   justify-content: space-between;
@@ -237,7 +262,7 @@ p {
   .header__navigation .navigator {
     flex-direction: column;
     width: auto;
-    margin: 232px 0px 0px 71px;
+    margin: 218.5px 0px 0px 71px;
   }
 }
 .header__navigation .navigator li::before {
@@ -272,7 +297,7 @@ p {
     display: block;
     font-size: 24px;
     line-height: 29px;
-    margin: 0 0 27px 0;
+    margin: 13.5px 0 13.5px 0;
   }
 }
 .header__navigation .navigator .active {
