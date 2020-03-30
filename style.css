@@ -123,6 +123,11 @@ p {
   letter-spacing: 0.19px;
   text-align: justify;
 }
+@media (max-width: 767px) {
+  p {
+    text-align: left;
+  }
+}
 
 @keyframes slideinLeft {
   from {
@@ -140,12 +145,24 @@ p {
     left: 0;
   }
 }
-@keyframes NavigationinRight {
+@keyframes NavigationOut {
   from {
+    box-shadow: 0px -40px 20px rgba(0, 0, 0, 0.4), 0 0 0 calc(100vw - 278px) #2d303acc;
     left: 0%;
   }
   to {
     left: -100%;
+    box-shadow: none;
+  }
+}
+@keyframes NavigationIn {
+  from {
+    left: -100%;
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0px -40px 20px rgba(0, 0, 0, 0.4), 0 0 0 calc(100vw - 278px) #2d303acc;
+    left: 0%;
   }
 }
 .header {
@@ -238,7 +255,7 @@ p {
     left: 0;
     height: 100%;
     width: 278px;
-    box-shadow: 0px -40px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px -40px 20px rgba(0, 0, 0, 0.4), 0 0 0 calc(100vw - 278px) #2d303acc;
     background: #2d303a;
   }
 }
@@ -247,11 +264,12 @@ p {
 }
 .header__navigation_showIn {
   animation-duration: 0.8s;
-  animation-name: slideinRight;
+  animation-name: NavigationIn;
 }
 .header__navigation_showOut {
   animation-duration: 0.8s;
-  animation-name: NavigationinRight;
+  animation-name: NavigationOut;
+  animation-timing-function: ease;
 }
 .header__navigation .navigator {
   display: flex;
@@ -537,6 +555,11 @@ p {
   border-bottom: 6px solid #ffffff;
   scroll-margin-top: 95px;
 }
+@media (max-width: 1019px) {
+  .services {
+    border: none;
+  }
+}
 @media (max-width: 767px) {
   .services {
     scroll-margin-top: 70px;
@@ -563,10 +586,8 @@ p {
   letter-spacing: -0.18px;
 }
 .services p {
-  font-weight: 500;
   letter-spacing: -0.21px;
   margin-bottom: 35px;
-  text-align: justify;
 }
 
 .tools {
@@ -652,10 +673,15 @@ p {
   border-bottom: 6px solid #ffffff;
   scroll-margin-top: 95px;
 }
+@media (max-width: 1019px) {
+  .about {
+    border-bottom: none;
+  }
+}
 @media (max-width: 767px) {
   .about {
-    border: none;
     scroll-margin-top: 70px;
+    border-bottom: none;
   }
 }
 .about__wrapper {
@@ -709,6 +735,7 @@ p {
   line-height: 22px;
   font-weight: 400;
   letter-spacing: -0.04px;
+  text-align: justify;
 }
 .resume__image {
   width: 300px;
