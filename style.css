@@ -874,7 +874,7 @@ p {
 }
 .works__image {
   flex: 1 0 calc((100% - 4*20px)/4);
-  height: auto;
+  height: 100%;
   margin: 10px 10px;
   cursor: pointer;
   transition: all 0.2s ease-out;
