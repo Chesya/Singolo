@@ -747,35 +747,23 @@ p {
   text-align: justify;
 }
 .resume__image {
-  width: 300px;
-  background-size: cover;
-  height: 300px;
+  height: auto;
   cursor: pointer;
   transition: all 0.3s ease-out;
 }
 @media (max-width: 1019px) {
   .resume__image {
     width: 100%;
-    height: 28vw;
   }
 }
 @media (max-width: 767px) {
   .resume__image {
-    height: 314px;
-    background-size: cover;
+    width: auto;
+    max-width: 100%;
   }
 }
 .resume__image:hover {
   opacity: 0.1;
-}
-.resume__image_1 {
-  background-image: url(././assets/avatar1.png);
-}
-.resume__image_2 {
-  background-image: url(././assets/avatar2.png);
-}
-.resume__image_3 {
-  background-image: url(././assets/avatar3.png);
 }
 .resume__link {
   padding: 11px 0 0 0;
@@ -855,6 +843,12 @@ p {
   border-radius: 6px;
   transition: all 0.3s;
 }
+@media (max-width: 374px) {
+  .tags__list li {
+    padding: 4px 5px;
+    font-size: 10px;
+  }
+}
 .tags__list .active {
   color: #f06c64;
   border: 1px solid #2d303a;
@@ -862,14 +856,14 @@ p {
 
 .works {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   overflow: hidden;
-  padding: 19px 40px 6px 40px;
+  padding: 9px 30px 16px 30px;
 }
 @media (max-width: 767px) {
   .works {
-    padding: 25px 30px 0px 30px;
+    padding: 18.5px 23.5px 6.5px 23.5px;
   }
 }
 .works .hidden {
@@ -879,43 +873,28 @@ p {
   box-shadow: 0 0 0 5px #F06C64;
 }
 .works__image {
-  width: 220px;
-  height: 187px;
-  margin-bottom: 20px;
+  flex: 1 0 calc((100% - 4*20px)/4);
+  height: auto;
+  margin: 10px 10px;
   cursor: pointer;
   transition: all 0.2s ease-out;
 }
 @media (max-width: 1019px) {
   .works__image {
-    min-width: 216.16px;
-    min-height: 183.76px;
-    height: auto;
-    height: calc(0.8*width);
-    margin-right: 19.65px;
-    margin-bottom: 19.65px;
-    flex-basis: calc((100% - 2*19.65px)/3);
-  }
-  .works__image:nth-child(3n) {
-    margin-right: 0;
+    min-width: 216px;
+    flex: 1 0 calc((100% - 3*20px)/3);
   }
 }
 @media (max-width: 767px) {
   .works__image {
     min-width: 151px;
-    min-height: 128px;
-    height: auto;
-    margin-right: 13px;
-    margin-bottom: 14px;
-    flex-basis: calc((100% - 13px)/2);
-  }
-  .works__image:nth-child(2n) {
-    margin-right: 0;
+    margin: 7px 6.5px;
+    flex: 1 0 calc((100% - 2*13px)/2);
   }
 }
 @media (max-width: 374px) {
   .works__image {
     min-width: 123px;
-    min-height: 107px;
   }
 }
 .works__image .tag {
