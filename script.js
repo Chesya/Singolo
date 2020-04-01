@@ -247,38 +247,40 @@ const addHamburgerMenuClickHandler = () => {
     let HamburgerList = document.querySelector('.navigator');
     let HeaderLogo = document.querySelector('.header__logo');
     document.addEventListener('click', (e) => {
-        if (e.target ==  HamburgerBlock || e.target == HamburgerLine ) {
-            if (HamburgerBlock.classList.contains('hamburger_active')) {
-                HamburgerBlock.classList.remove('hamburger_active');
-                HamburgerMenu.classList.remove('header__navigation_active');
-                HeaderLogo.classList.remove('header__logo_active');
-                HamburgerMenu.classList.remove('header__navigation_showIn');
-                HamburgerMenu.classList.add('header__navigation_showOut');
+        if (document.documentElement.clientWidth < 768) {
+            if (e.target ==  HamburgerBlock || e.target == HamburgerLine ) {
+                if (HamburgerBlock.classList.contains('hamburger_active')) {
+                    HamburgerBlock.classList.remove('hamburger_active');
+                    HamburgerMenu.classList.remove('header__navigation_active');
+                    HeaderLogo.classList.remove('header__logo_active');
+                    HamburgerMenu.classList.remove('header__navigation_showIn');
+                    HamburgerMenu.classList.add('header__navigation_showOut');
+                } else {
+                    HamburgerBlock.classList.add('hamburger_active');
+                    HamburgerMenu.classList.add('header__navigation_active');
+                    HeaderLogo.classList.add('header__logo_active');
+                    HamburgerMenu.classList.remove('header__navigation_showOut');
+                    HamburgerMenu.classList.add('header__navigation_showIn');
+                }
             } else {
-                HamburgerBlock.classList.add('hamburger_active');
-                HamburgerMenu.classList.add('header__navigation_active');
-                HeaderLogo.classList.add('header__logo_active');
-                HamburgerMenu.classList.remove('header__navigation_showOut');
-                HamburgerMenu.classList.add('header__navigation_showIn');
+                if (e.target !== HamburgerMenu ) {
+                    HamburgerBlock.classList.remove('hamburger_active');
+                    HamburgerMenu.classList.remove('header__navigation_active');
+                    HeaderLogo.classList.remove('header__logo_active');
+                    HamburgerMenu.classList.add('header__navigation_showOut');
+                }
             }
-        } else {
-            if (e.target !== HamburgerMenu ) {
-                HamburgerBlock.classList.remove('hamburger_active');
-                HamburgerMenu.classList.remove('header__navigation_active');
-                HeaderLogo.classList.remove('header__logo_active');
-                HamburgerMenu.classList.add('header__navigation_showOut');
+            if (e.target.ParentNode == HamburgerList ) {
+                if (e.target.classList.contains('active')) {
+                    HamburgerBlock.classList.remove('hamburger_active');
+                    HamburgerMenu.classList.remove('header__navigation_active');
+                    HeaderLogo.classList.remove('header__logo_active');
+                    HamburgerMenu.classList.add('header__navigation_showOut');  
+                }      
             }
-        }
-        if (e.target.ParentNode == HamburgerList ) {
-            if (e.target.classList.contains('active')) {
-                HamburgerBlock.classList.remove('hamburger_active');
-                HamburgerMenu.classList.remove('header__navigation_active');
-                HeaderLogo.classList.remove('header__logo_active');
-                HamburgerMenu.classList.add('header__navigation_showOut');  
-            }
-            
-        }
+        }        
     })
+        
     window.addEventListener("resize", () => {
         if(document.documentElement.clientWidth >= 768) {
             HamburgerBlock.classList.remove('hamburger_active');
